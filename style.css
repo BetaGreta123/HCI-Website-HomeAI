@@ -255,6 +255,7 @@ background-color: #f9f9f9;
   }
 .device-card .device-name {
 font-weight: bold;
+color: rgb(114, 178, 178);
   }
 .device-config {
 display: none;
@@ -320,3 +321,28 @@ flex-direction: column;
 gap: 12px;
   }
 
+  .Popupmembers{
+/*display: none;*/
+background-color: white;
+color: rgb(127, 203, 203);
+border-radius: 10px ;
+align-items: center;
+position: absolute;
+
+  }
+
+  .checkbox-div{
+    background-color: white;
+    margin-top: 10px;
+    color: rgb(142, 200, 195);
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+    width: 330px;
+    overflow: scroll;
+    height: 50px;
+  }
+
+  .checkbox{
+    background-color: pink;
+  }
