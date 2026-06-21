@@ -2,47 +2,63 @@
 
 <html>
     <head>
-        <title>New Device</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
-       
-        <div id="phone-container">
-            <img id="phone-frame" src="Phone_html_layout.png" alt="Phone Frame">
-          <div id="wrapper">
+<title>New Device</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="phone-container">
+<img id="phone-frame" src="Phone_html_layout.png" alt="Phone Frame">
+<div id="wrapper">
+<a href="dashboard.html"> <img src="HomeButton.png" class="HomeButton"> </a>
+<h2 class="h2">please select a device you would like to add to your dashboard</h2>
 
-           <a href="dashboard.html"> <img src="HomeButton.png" class="HomeButton"> </a>
+<div id="soundbar_select" style="background-color: aqua; color: white; align-items: center; text-align: center; margin-top: 50px; width: 100px; margin-left: 120px;">
+    <button style="color:white; background-color:lightblue; border: none;" type="button" onclick="popup()">
+        <h2 id="Soundbar" class="h2">JBL Soundbar</h2>
+    </button>
+</div>
 
-            <h2 class="h2">please select a device you would like to add to your dashboard</h2>
-            <div style=  "background-color: aqua; color: white; align-items: center; text-align: center; margin-top: 50px; width: 100px; margin-left: 120px;"> <button style=" color:white; background-color:lightblue; border: none;" type="button" onclick="popup()"> <h2 class="h2">JBL Soundbar</h2></button></div>
-            <div id = connected_device style="position:absolute; top: 100px;  display: none;  height: 200px; width: 100px; background-color: pink; border-radius: 1cm; margin-top: 50px; align-items: center;"> <img src="" style="margin-top: 10px;"> <p style="margin-top: 100px;">JBL Soundbar</p></div>
-            <div id = add_device style="border: none; position: absolute; top: 400px; background-color: rgb(143, 249, 249); width: 200px; height: 30px; align-content: center;"> <button id = 'add_button'onclick="validateDevice()" style="background-color: rgb(114, 253, 253); border: none;"> add device </button> </div>
+<div id="connected_device" style="position:absolute; top: 100px; display: none; height: 200px; width: 100px; background-color: pink; border-radius: 1cm; margin-top: 50px; align-items: center;">
+    <img src="" style="margin-top: 10px;">
+    <p style="margin-top: 100px;">JBL Soundbar</p>
+</div>
 
-          </div>
+<div id="add_device" style="border: none; position: absolute; top: 400px; background-color: rgb(143, 249, 249); width: 200px; height: 30px; align-content: center;">
+    <button id="add_button" onclick="validateDevice()" style="background-color: rgb(114, 253, 253); border: none;"> add device </button>
+</div>
 
-        </div>
-    </body>
+</div>
+</div>
+</body>
+<script>
 
-    <script>
-     function popup(){
-        document.getElementById('connected_device').style.display= 'block';
-        return;
+// Beim Laden der Seite prüfen, ob die Soundbar schon hinzugefügt wurde
+document.addEventListener('DOMContentLoaded', () => {
+    const alreadyAdded = localStorage.getItem('JBLAdded') === 'true';
+    if (alreadyAdded) {
+        document.getElementById('soundbar_select').style.display = 'none';
     }
+});
 
-    function validateDevice() {
-    let check = document.getElementById('connected_device').style.display;
-
-    if (check == 'none') {
-        let delay = 800;
-        document.getElementById('add_button').textContent =
-            'Please select a device first';  
-        document.getElementById('add_button').style.color = 'red';
-
-        return;
-    }
-
-    window.location.href = 'dashboard.html';
+function popup(){
+    document.getElementById('connected_device').style.display = 'block';
 }
-    </script>
+
+function validateDevice() {
+    const check = document.getElementById('connected_device').style.display;
+
+    if (check !== 'block') {
+        // noch kein Gerät ausgewählt -> Fehlermeldung, NICHT weiterleiten
+        document.getElementById('add_button').textContent = 'Please select a device first';
+        document.getElementById('add_button').style.color = 'red';
+        return false;
+    }
+
+    // Gerät erfolgreich hinzugefügt -> dauerhaft merken
+    localStorage.setItem('JBLAdded', 'true');
+    window.location.href = 'dashboard.html';
+    return true;
+}
+
+</script>
 </html>

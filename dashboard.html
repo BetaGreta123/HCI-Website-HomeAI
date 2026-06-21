@@ -31,7 +31,7 @@
           <h3>Allowances</h3>
           <label><input type="checkbox" name="allowance" value="lights" checked> Lichter steuern</label>
           <label><input type="checkbox" name="allowance" value="thermostat" checked> Thermostat steuern</label>
-          <button type="button" class="btn cancel collapse-button" onclick="toggleAllowances()">Einklappen</button>
+          <button style = 'color: white;' type="button" class="btn cancel collapse-button" onclick="toggleAllowances()">Back</button>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
         </div>
       </div>
 
-      <div class="device-card" onclick="toggleDevice('soundbarConfig')">
+      <div class="device-card" onclick="toggleDevice('soundbarConfig') " id="soundbarCard" style="display: none;">
         <span class="device-name"> JBL Soundbar</span>
         <div class="device-config" id="soundbarConfig">
           <div class="volume-control">
@@ -127,7 +127,7 @@ function checkReferrer() {
   const allowedReferrer = "devices.html"; // oder volle URL, z.B. "https://meineseite.de/index.html"
 
   if (document.referrer.includes(allowedReferrer)) {
-    
+    document.getElementById('soundbarCard').style.display = 'block';
   }
 }
 </script>
