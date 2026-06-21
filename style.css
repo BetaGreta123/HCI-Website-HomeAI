@@ -1,0 +1,322 @@
+/* don't read ts its trash  but atleast it works :) */
+
+body{
+    background-color:rgb(148, 210, 210);
+    cursor: url('paw-cursor.png'), auto;
+    color: white;
+}
+#phone-container {
+position: relative;
+width: 1000px;      
+max-width: 100%;
+  }
+#phone-frame {
+display: block;
+width: 100%;
+height: auto;
+  }
+/* place wrapper div inside phone frame*/
+#wrapper { 
+position: absolute;
+left: 16%;
+top: 12.4%;
+width: 69.7%;
+height: 71.25%;
+overflow-y: auto;
+overflow-x: hidden;
+box-sizing: border-box;
+padding: 16px;
+z-index: 1;
+background-color: rgb(252, 243, 251);
+overflow: scroll;
+text-align: center;
+  }
+/* Login-Titel */
+.title {
+background-color: rgb(180, 243, 178);
+  }
+/* Einheitliches Aussehen für h2 — egal ob frei oder im Button */
+h2 {
+background-color: pink;
+border-radius: 5px;
+margin: 0;
+padding: 6px 16px;
+font-size: 1.3rem;
+display: inline-block;
+font-family: inherit;
+  }
+/* Container für "in" / "on", damit beide nebeneinander gleich behandelt werden */
+.nav-tabs {
+display: flex;
+align-items: center;
+gap: 40px;
+margin: 20px 0;
+  }
+/* Button-Reset, damit er sich wie ein neutraler Wrapper verhält */
+.open-button {
+background: none;
+border: none;
+padding: 0;
+margin: 0;
+cursor: pointer;
+font: inherit;
+line-height: 1;
+  }
+/* Popup-Formular */
+.form-popup {
+display: none;
+position: absolute;
+top: 120px;
+left: 50%;
+transform: translateX(-50%);
+min-height: 500px;
+height: auto;
+width: 300px;
+text-align: center;
+border: 2px solid #333;
+background-color: #fff;
+border-radius: 8px;
+z-index: 10;
+margin-top: 50px;
+padding-bottom: 20px;
+  }
+.form-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0 20px;
+  }
+.form-title {
+margin: 30px 0 20px 0;
+  }
+/* Labels: Margin in alle Richtungen */
+.form-container label {
+display: block;
+width: 100%;
+text-align: left;
+margin: 16px 12px 6px 4px;
+  }
+.form-container input {
+display: block;
+width: 100%;
+box-sizing: border-box;
+margin: 0 0 16px 0;
+padding: 8px 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+  }
+.form-buttons {
+display: flex;
+justify-content: center;
+gap: 12px;
+margin-top: 20px;
+  }
+.btn {
+padding: 8px 20px;
+border: none;
+border-radius: 4px;
+background-color: rgb(64, 166, 214);
+color: white;
+cursor: pointer;
+  }
+.btn.cancel {
+background-color: pink;
+color: black;
+  }
+.error-message {
+color: #c0392b;
+font-size: 0.85rem;
+margin-top: -8px;
+margin-bottom: 8px;
+display: none;
+  }
+
+/* ---------- Account-found Bestätigung im Login-Popup ---------- */
+.account-found {
+display: none;
+flex-direction: column;
+align-items: center;
+padding: 0 20px;
+  }
+.account-found p.found-message {
+margin: 20px 0 16px 0;
+font-weight: bold;
+  }
+.profile-pic-small {
+width: 90px;
+height: 90px;
+border-radius: 50%;
+object-fit: cover;
+border: 1px solid pink;
+background-color: aqua;
+margin-bottom: 10px;
+  }
+.account-found .user-name {
+font-size: 1.1rem;
+font-weight: bold;
+margin-bottom: 16px;
+  }
+.signin-link {
+display: inline-block;
+text-decoration: none;
+padding: 8px 24px;
+border-radius: 4px;
+background-color: #4caf50;
+color: white;
+font-weight: bold;
+  }
+
+/* ---------- Dashboard ---------- */
+.welcome-message {
+margin: 10px 0 16px 0;
+  }
+.top-row {
+display: flex;
+align-items: flex-start;
+justify-content: center;
+gap: 16px;
+  }
+.placeholder-image {
+width: 500px;
+height: 300px;
+background-color: rgb(137, 247, 247);
+border: 1px solid pink;
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #777;
+font-size: 0.9rem;
+box-sizing: border-box;
+margin-left: 50px;
+  }
+.profile-button {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+overflow: hidden;
+border: 2px solid aqua;
+padding: 0;
+cursor: pointer;
+background-color: #eee;
+flex-shrink: 0;
+position: relative;
+top: -55px;
+  }
+.profile-button img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+  }
+.allowances-popup {
+display: none;
+margin-top: 10px;
+border: 1px solid #333;
+border-radius: 8px;
+padding: 12px;
+background-color: #fff;
+text-align: left;
+width: 100%;
+box-sizing: border-box;
+  }
+.allowances-popup h3 {
+margin: 0 0 8px 0;
+font-size: 1rem;
+  }
+.allowances-popup label {
+display: block;
+margin: 6px 0;
+font-weight: normal;
+  }
+.collapse-button {
+margin-top: 8px;
+  }
+
+.devices-section {
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+text-align: left;
+  }
+.devices-section h3 {
+text-align: center;
+margin-bottom: 4px;
+border: 1px solid pink;
+border-radius: 5px;
+background-color: pink;
+  }
+.device-card {
+border: 1px solid #ccc;
+border-radius: 8px;
+padding: 10px 14px;
+cursor: pointer;
+background-color: #f9f9f9;
+  }
+.device-card .device-name {
+font-weight: bold;
+  }
+.device-config {
+display: none;
+margin-top: 10px;
+padding-top: 10px;
+border-top: 1px dashed #ccc;
+  }
+.temp-control {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;;
+  }
+.temp-control button {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 1px solid pink;
+background-color: #fff;
+font-size: 1.1rem;
+cursor: pointer;
+  }
+.temp-value {
+font-size: 1.2rem;
+font-weight: bold;
+min-width: 50px;
+text-align: center;
+  }
+.lamp-control {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+  }
+
+.dashboard-links {
+margin-top: 24px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+align-items: center;
+  }
+.dashboard-links a {
+text-decoration: none;
+color: inherit;
+display: inline-block;
+  }
+
+  HomeButton{
+    background-color:black;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+
+  }
+
+  /* ---------- Members-Seite ---------- */
+.members-list {
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+  }
+

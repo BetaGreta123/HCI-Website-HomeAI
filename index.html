@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>The Coolest Smart Home App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<div id="phone-container">
+  <img id="phone-frame" src="Phone_html_layout.png" alt="Phone Frame">
+  <div id="wrapper">
+    <h1 class="title">sign 👽</h1>
+
+    <div class="nav-tabs">
+      <button class="open-button" onclick="openForm()">
+        <h2>in</h2>
+      </button>
+      <h2>on</h2>
+    </div>
+
+    <!-- The form -->
+    <div class="form-popup" id="myForm">
+
+      <!-- Login Entry ahh -->
+      <form class="form-container" id="loginForm" onsubmit="return checkLogin(event)">
+        <h2 class="form-title">Login</h2>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="email" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+
+        <p class="error-message" id="loginError">Email oder Passwort ist falsch.</p>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn">Login</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </div>
+      </form>
+
+      <!-- Bestätigung: Account gefunden -->
+      <div class="account-found" id="accountFound">
+        <img class="profile-pic-small" id="foundProfilePic" src="" alt="Profilbild">
+        <p class="found-message">We found your account! 🎉</p>
+        <p class="user-name" id="foundUserName"></p>
+        <a class="signin-link" id="signInLink" href="dashboard.html">Sign in</a>
+        <div class="form-buttons" style="margin-top: 16px;">
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </div>
+      </div>
+
+    </div><!-- form-popup closing tag -->
+
+  </div><!-- wrapper closing tag-->
+</div>
+
+</body>
+
+<script>
+//popup functions
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  // reset state for next time the popup is opened
+  document.getElementById("loginForm").style.display = "flex";
+  document.getElementById("accountFound").style.display = "none";
+  document.getElementById("loginError").style.display = "none";
+}
+
+// 'valid user'
+
+const validUser = {
+  email: "test@example.com",
+  psw: "1234",
+  name: "Alex",
+  profilePic: "" // reminder: add pb here
+};
+
+function checkLogin(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const psw = document.getElementById("psw").value;
+
+  if (email === validUser.email && psw === validUser.psw) {
+    document.getElementById("loginError").style.display = "none";
+    document.getElementById("loginForm").style.display = "none";
+
+    document.getElementById("foundUserName").textContent = validUser.name;
+    document.getElementById("foundProfilePic").src = validUser.profilePic;
+
+    // finish this when done w rest
+    document.getElementById("signInLink").href =
+      "dashboard.html?name=" + encodeURIComponent(validUser.name);
+
+    document.getElementById("accountFound").style.display = "flex";
+  } else {
+    document.getElementById("loginError").style.display = "block";
+  }
+
+  return false;
+}
+</script>
+</html>
