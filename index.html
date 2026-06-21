@@ -11,13 +11,13 @@
 <div id="phone-container">
   <img id="phone-frame" src="Phone_html_layout.png" alt="Phone Frame">
   <div id="wrapper">
-    <h1 class="title">sign 👽</h1>
+    <h1 id = 'sign' class="title">sign 👽</h1>
 
-    <div class="nav-tabs">
+    <div id="nav_tabs" class="nav-tabs">
       <button class="open-button" onclick="openForm()">
-        <h2>in</h2>
+        <h2 style="color: white;">in</h2>
       </button>
-      <h2>on</h2>
+      <h2 style="position: relative; left: 200px;">on</h2>
     </div>
 
     <!-- The form -->
@@ -43,8 +43,8 @@
 
       <!-- Bestätigung: Account gefunden -->
       <div class="account-found" id="accountFound">
-        <img class="profile-pic-small" id="foundProfilePic" src="" alt="Profilbild">
-        <p class="found-message">We found your account! 🎉</p>
+        <img class="profile-pic-small" id="foundProfilePic" src="" alt="Profilbild" style=" margin-top: 50px;">
+        <p class="found-message">We found your account!!! Yippiii!!</p>
         <p class="user-name" id="foundUserName"></p>
         <a class="signin-link" id="signInLink" href="dashboard.html">Sign in</a>
         <div class="form-buttons" style="margin-top: 16px;">
@@ -76,9 +76,9 @@ function closeForm() {
 // 'valid user'
 
 const validUser = {
-  email: "test@example.com",
+  email: "gretasemail@example.com",
   psw: "1234",
-  name: "Alex",
+  name: "Greta",
   profilePic: "" // reminder: add pb here
 };
 
@@ -100,6 +100,8 @@ function checkLogin(event) {
       "dashboard.html?name=" + encodeURIComponent(validUser.name);
 
     document.getElementById("accountFound").style.display = "flex";
+    document.getElementById("sign").style.display = "none";
+    document.getElementById("nav_tabs").style.display = "none";
   } else {
     document.getElementById("loginError").style.display = "block";
   }

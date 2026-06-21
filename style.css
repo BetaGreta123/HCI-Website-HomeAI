@@ -137,10 +137,12 @@ display: none;
 flex-direction: column;
 align-items: center;
 padding: 0 20px;
+color: rgb(114, 178, 178);
   }
 .account-found p.found-message {
 margin: 20px 0 16px 0;
 font-weight: bold;
+color: rgb(127, 203, 203);
   }
 .profile-pic-small {
 width: 90px;
