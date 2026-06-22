@@ -12,7 +12,7 @@
 <a href="dashboard.html"> <img src="HomeButton.png" class="HomeButton"> </a>
 <h2 class="h2">please select a device you would like to add to your dashboard</h2>
 
-<div id="soundbar_select" style="background-color: aqua; color: white; align-items: center; text-align: center; margin-top: 50px; width: 100px; margin-left: 120px;">
+<div id="soundbar_select" style="background-color: aqua; color: white; align-items: center; text-align: center; margin-top: 50px; width: 100px; margin-left: 120px; "
     <button style="color:white; background-color:lightblue; border: none;" type="button" onclick="popup()">
         <h2 id="Soundbar" class="h2">JBL Soundbar</h2>
     </button>
@@ -32,7 +32,7 @@
 </body>
 <script>
 
-// Beim Laden der Seite prüfen, ob die Soundbar schon hinzugefügt wurde
+// check if device already added and hide it from selection if so
 document.addEventListener('DOMContentLoaded', () => {
     const alreadyAdded = localStorage.getItem('JBLAdded') === 'true';
     if (alreadyAdded) {
@@ -48,13 +48,12 @@ function validateDevice() {
     const check = document.getElementById('connected_device').style.display;
 
     if (check !== 'block') {
-        // noch kein Gerät ausgewählt -> Fehlermeldung, NICHT weiterleiten
+        
         document.getElementById('add_button').textContent = 'Please select a device first';
         document.getElementById('add_button').style.color = 'red';
         return false;
     }
 
-    // Gerät erfolgreich hinzugefügt -> dauerhaft merken
     localStorage.setItem('JBLAdded', 'true');
     window.location.href = 'dashboard.html';
     return true;
