@@ -23,7 +23,7 @@
       <div>
         <!-- more pop ups-->
         <button class="profile-button" id="profileButton" onclick="toggleAllowances()">
-          <img src="" alt="Profilbild" id="profilePicSmall">
+          <img src="GretaPopup.png" alt="Profilbild" id="profilePicSmall">
         </button>
 
         <!-- Allowances Popup -->
@@ -46,9 +46,20 @@
         <div class="device-config" id="lampConfig">
           <div class="lamp-control">
             <label><input type="checkbox" id="lampOn" checked> An</label>
-            <label>Helligkeit:
-              <input type="range" id="lampBrightness" min="0" max="100" value="70">
-            </label>
+            <!-- Lampe -->
+<label>Helligkeit:
+  <input type="range" id="lampBrightness" min="0" max="100" value="70" step="25" list="brightnessTicks">
+  <datalist id="brightnessTicks">
+      <option value="0"></option>
+      <option value="25"></option>
+      <option value="50"></option>
+      <option value="75"></option>
+      <option value="100"></option>
+  </datalist>
+  <div class="scale-labels">
+      <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+  </div>
+</label>
           </div>
         </div>
       </div>
@@ -65,16 +76,56 @@
         </div>
       </div>
 
-      <div class="device-card" onclick="toggleDevice('soundbarConfig') " id="soundbarCard" style="display: none;">
-        <span class="device-name"> JBL Soundbar</span>
+      <div class="device-card" onclick="toggleDevice('soundbarConfig')" id="soundbarCard" style="display: none;">
+        <span class="device-name">JBL Soundbar</span>
         <div class="device-config" id="soundbarConfig">
-          <div class="volume-control">
-            <label>Volume:
-              <input type="range" id="soundbarVolume" min="0" max="100" value="50">
-            </label>
-          </div>
-        </div>
-      </div>
+
+            <div class="now-playing" style="text-align: center; margin-bottom: 10px;">
+                <p id="songTitle" style="margin: 0; font-weight: bold;">Blinding Lights</p>
+                <p id="songArtist" style="margin: 0; font-size: 1.5em; color: white; background-color: pink; border-radius: 10px;">The Weeknd</p>
+            </div>
+
+            <!-- Progress Bar Song -->
+<div class="progress-control" style="margin-bottom: 10px;">
+  <input type="range" id="songProgress" min="0" max="100" value="30" step="25" list="progressTicks"
+         onclick="event.stopPropagation()" oninput="event.stopPropagation()">
+  <datalist id="progressTicks">
+      <option value="0"></option>
+      <option value="25"></option>
+      <option value="50"></option>
+      <option value="75"></option>
+      <option value="100"></option>
+  </datalist>
+</div>
+
+            <div class="player-controls" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
+                <button class="btn" type="button" onclick="event.stopPropagation(); prevSong()">⏮</button>
+                <button class="btn"   type="button" id="playPauseBtn" onclick="event.stopPropagation(); togglePlay()">⏸</button>
+                <button class="btn" type="button" onclick="event.stopPropagation(); nextSong()">⏭</button>
+            </div>
+
+            <!-- Soundbar Lautstärke -->
+<!-- Soundbar Lautstärke -->
+<label>Volume:
+  <input type="range" id="soundbarVolume" min="0" max="100" value="50" step="25" list="volumeTicks"
+         onclick="event.stopPropagation()" oninput="event.stopPropagation()">
+  <datalist id="volumeTicks">
+      <option value="0"></option>
+      <option value="25"></option>
+      <option value="50"></option>
+      <option value="75"></option>
+      <option value="100"></option>
+  </datalist>
+  <div class="scale-labels">
+      <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+  </div>
+</label>
+
+        </div><!-- soundbarConfig -->
+      </div><!-- soundbarCard -->
+
+    </div><!-- devices-section closing tag, war vorher nicht da -->
+
     <!-- hyperlinks -->
     <div class="dashboard-links">
       <a href="devices.html"><h2 class="hover">add new device</h2></a>
@@ -82,9 +133,8 @@
       <a href="schedule.html"><h2 class="hover">view schedule</h2></a>
     </div>
 
-  </div><!-- wrapper closing tag-->
+  </div><!-- wrapper closing tag -->
 </div>
-
 </body>
 
 <script>
@@ -92,10 +142,6 @@
 const params = new URLSearchParams(window.location.search);
 const userName = params.get("name") || "User";
 document.getElementById("welcomeMessage").textContent = "Welcome Back, " + userName;
-
-
-const profilePicSrc = "";
-document.getElementById("profilePicSmall").src = profilePicSrc;
 
 function toggleAllowances() {
   const popup = document.getElementById("allowancesPopup");
@@ -121,14 +167,15 @@ function changeTemp(delta) {
   document.getElementById("tempValue").textContent = temperature + "°C";
 }
 
-document.addEventListener("DOMContentLoaded", checkReferrer);
 
-function checkReferrer() {
-  const allowedReferrer = "devices.html"; // oder volle URL, z.B. "https://meineseite.de/index.html"
 
-  if (document.referrer.includes(allowedReferrer)) {
-    document.getElementById('soundbarCard').style.display = 'block';
-  }
+document.addEventListener("DOMContentLoaded", checkSoundbarAdded);
+
+function checkSoundbarAdded() {
+    const alreadyAdded = localStorage.getItem('JBLAdded') === 'true';
+    if (alreadyAdded) {
+        document.getElementById('soundbarCard').style.display = 'block';
+    }
 }
 </script>
 </html>

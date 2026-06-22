@@ -11,13 +11,14 @@
 <div id="phone-container">
   <img id="phone-frame" src="Phone_html_layout.png" alt="Phone Frame">
   <div id="wrapper">
-    <h1 id = 'sign' class="title">sign 👽</h1>
+    <h1 id = 'sign' class="title">sign </h1>
+    <img id = 'ALien' src="Alien_Sprite.png" style="position: absolute; top: 5%; left: 60%;">
 
     <div id="nav_tabs" class="nav-tabs">
       <button class="open-button" onclick="openForm()">
         <h2 style="color: white;">in</h2>
       </button>
-      <h2 style="position: relative; left: 200px;">on</h2>
+      <h2 style="position: absolute; right: 10%;">on</h2>
     </div>
 
     <!-- The form -->
@@ -43,7 +44,7 @@
 
       <!-- Bestätigung: Account gefunden -->
       <div class="account-found" id="accountFound">
-        <img class="profile-pic-small" id="foundProfilePic" src="" alt="Profilbild" style=" margin-top: 50px;">
+        <img class="profile-pic-small" id="foundProfilePic" src="" alt="Profilbild" style=" margin-top: 50px;" >
         <p class="found-message">We found your account!!! Yippiii!!</p>
         <p class="user-name" id="foundUserName"></p>
         <a class="signin-link" id="signInLink" href="dashboard.html">Sign in</a>
@@ -79,7 +80,7 @@ const validUser = {
   email: "gretasemail@example.com",
   psw: "1234",
   name: "Greta",
-  profilePic: "" // reminder: add pb here
+  profilePic: 'GretaPopup.png' // reminder: add pb here
 };
 
 function checkLogin(event) {
@@ -102,6 +103,7 @@ function checkLogin(event) {
     document.getElementById("accountFound").style.display = "flex";
     document.getElementById("sign").style.display = "none";
     document.getElementById("nav_tabs").style.display = "none";
+    document.getElementById('ALien').style.display = 'none';
   } else {
     document.getElementById("loginError").style.display = "block";
   }
